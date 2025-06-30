@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        sourceCodeFont: ['Source Code Pro', 'monospace'],
+        game: ['"Press Start 2P"','system-ui'],
+      }
+    },
   },
   plugins: [],
 }
