@@ -1,44 +1,35 @@
 import Footer from "./layouts/footerDektop";
 import BackgroundDesktop from "./layouts/BackgroundDesktop";
+import logo from "./assets/CyberHunt-Logo.png"
+import BackgroundMusic from "./components/BackgroundMusic"
+
 
 
 export default function DesktopView() {
     return(
+        <>
+             <div className="relative min-h-screen overflow-hidden">
+                <BackgroundDesktop />
 
-        <div className="min-h-screen flex flex-col bg-gray-50">
-            
-            {/* Contenido Principal*/}
-            <main className="flex-grow p-6 pb-16">
+                <main className="relative z-10 flex flex-col items-center justify-center text-white text-center px-4 py-16">
+                    <BackgroundMusic iconSize="w-24 h-24"/> 
+
+                     <img src={logo} alt="CyberHunt Logo" className=" h-40 object-contain animate-bounce"/> 
+
+                     <p className="text-3xl text-center text-white font-sourceCodeFont pt-24">
+                        CYBERHUNT can’t receive input on desktop, <br />
+                        we suggest you to visit on mobile! it is worth it! :)
+                    </p>
+
+                    
+                </main>
                 
 
-                
-                <section className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow">
-                <h2 className="text-xl font-semibold mb-4">Contenido Principal</h2>
-                <p className="mb-4">Este es el contenido principal de tu aplicación. Puede crecer tanto como necesites.</p>
-                
-                {/* Ejemplo de contenido que puede variar en altura */}
-                <div className="space-y-4">
-                    {[1, 2, 3, 4].map((item) => (
-                    <div key={item} className="p-4 border rounded-lg">
-                        <p>Elemento de contenido #{item}</p>
-                    </div>
-                    ))}
-                </div>
-                </section>
+                <Footer />
+            </div>
+        
+        </>
 
-                
-            </main>
-
-
-           
-
-            <Footer/>
-
-            
-
-            
-
-
-        </div>
+        
     );
 }

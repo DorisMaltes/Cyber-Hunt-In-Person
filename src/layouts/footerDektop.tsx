@@ -13,7 +13,7 @@ export default function Footer(){
         return (
         <>
              <footer 
-                className="text-white p-4  shadow-inner fixed bottom-0 w-full"
+                className="text-white p-4  shadow-inner fixed bottom-0 w-full h-20"
                 style={{backgroundImage: `url(${ladrillosMobile})`}}
             />  
         </>);
@@ -22,8 +22,9 @@ export default function Footer(){
     else return(
     <>
         <footer 
-            className="text-white p-4  shadow-inner fixed bottom-0 w-full h-44"
+            className="w-full h-[194px] bg-repeat-x absolute bottom-0"
             style={{backgroundImage: `url(${ladrillosDesktop})`}}
        /> 
     </>);
 }
+

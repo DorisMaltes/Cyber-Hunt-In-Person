@@ -1,18 +1,88 @@
 import MovingCloud from "../components/design-components/MovingCloud"
 
-import star1 from "../assets/star-gif.gif"
-import star2 from "../assets/star2.png"
-import star3 from "../assets/star3.png"
-import star4 from "../assets/star4.png"
-import star5 from "../assets/star5.png"
+import star1 from "../assets/stars/star-gif.gif"
+import star2 from "../assets/stars/star2GIF.gif"
+import star3 from "../assets/stars/star3GIF.gif"
+import star5 from "../assets/stars/star5.png"
 
 import nube1 from "../assets/nube1.png"
+import nube2 from "../assets/nube2.png"
+
+import star6 from "../assets/stars/estrella6.gif"
+import star7 from "../assets/stars/estrella7.gif";
+import star8 from "../assets/stars/estrella8.gif"
+import star9 from "../assets/stars/estrella9.png"
+import star10 from "../assets/stars/estrella10.gif"
 
 
 export default function BackgroundDesktop() {
     return (
-        <div>
-            <div className="absolute right-0 bottom-0 size-16 bg-[green]">01</div>
+        <div className="fixed inset-0 -z-10 bg-cover bg-center bg-[#15054E]">
+
+               
+                <div className="relative w-full h-screen">
+
+                     <img src={star2} className="w-[30px] object-contain absolute top-[30%] left-[10%]" />
+
+                      <img src={star1} className="w-[20px] object-contain absolute top-[40%] left-[49px]" />
+
+                      <img src={star3} className="w-[20px] rotate-45 object-contain absolute top-[2%] left-[2%]" />
+
+                      <img src={star8} className="h-[20px] rotate-1 object-contain absolute top-[30%] right-[15px]" />
+
+                      <img src={star3} className="w-[46px] h-[46px] rotate-45 object-contain absolute top-[25%] right-[10%]" />
+
+                      <img src={star5} className="w-[10px] object-contain absolute top-1/2 right-[5%]" /> {/*punto morado*/}
+
+                    <img src={star3} className="w-[26px]  rotate-12 object-contain absolute top-[0%] left-1/2 rotate-0" />
+
+                    
+                    {/*4 puntos MORADS*/}
+                    <img src={star6} className="w-[50px]  object-contain absolute top-[50%] left-[30%] " />
+
+                    {/*cruz MORADA aqua con 4 puntos en el medio*/}
+                    <img src={star7} className="w-[26px]   object-contain absolute top-[3%] right-[2%] " />
+
+                    {/*cruz azul aqua con 4 puntos en el medio*/}
+                    <img src={star8} className="w-[20px] object-contain absolute top-[50%] left-[50%] " />
+
+                    {/*circulo de puntos azul aqua*/}
+                    <img src={star9} className="w-[20px]  object-contain absolute top-[65%] left-[15%] " />
+
+                    {/*circulo de puntos AMRAILLO*/}
+                    <img src={star10} className="w-[20px]  object-contain absolute top-[30%] left-[45%]" />
+
+
+                </div>
+                
+                 <MovingCloud
+                    imageUrl={nube1}
+                    direction="right-to-left"
+                    size={{ width: 'w-[224px]', height: 'h-[130px]' }}
+                    speed={1}
+                    yPosition="top-0"
+                />
+
+                <MovingCloud
+                    imageUrl={nube1}
+                    direction="left-to-right"
+                    size={{ width: 'w-48', height: 'h-32' }}
+                    speed={1}
+                    yPosition="top-1/2"
+                />
+
+                <MovingCloud
+                    imageUrl={nube2}
+                    direction="right-to-left"
+                    size={{ width: 'w-[254px]', height: 'h-[118px]' }}
+                    speed={0.5}
+                    yPosition="top-[30%]"
+                />
+
+            
+           
+
+
         </div>
     );
 
