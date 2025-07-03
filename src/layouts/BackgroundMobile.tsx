@@ -24,7 +24,7 @@ export default function BackgroundMobile() {
 
 
                     {/* estrella MORADA con 4 circurlos y cruz*/}
-                     <img src={star2} className="w-[46px] object-contain absolute top-[15%] left-[60%]" />
+                     <img src={star2} className="w-[46px] object-contain absolute bottom-[50%] left-[2%]" />
 
                     {/*estrella azul AQUA */}
                       <img src={star1} className="w-[25px] object-contain absolute top-[0%] left-[42%]" />
@@ -36,7 +36,7 @@ export default function BackgroundMobile() {
                       <img src={star8} className="h-[35px] rotate-1 object-contain absolute top-[12%] right-[1%]" />
 
                     {/*estrella amarilla normal*/}
-                      <img src={star3} className="w-[30px] rotate-45 object-contain absolute top-[1%] right-[20%]" />
+                      <img src={star3} className="w-[30px] rotate-45 object-contain absolute top-[1.5%] right-[20%]" />
 
                     {/*punto morado*/}
                     <img src={star5} className="w-[5px] object-contain absolute top-[6%] right-[52%]" /> 
@@ -44,6 +44,9 @@ export default function BackgroundMobile() {
 
                      {/*punto morado*/}
                     <img src={star5} className="w-[5px] object-contain absolute top-[3%] left-[25%]" /> 
+
+                      {/*punto morado*/}
+                    <img src={star5} className="w-[5px] object-contain absolute top-[4%] right-[10%]" /> 
 
                     {/*4 estrellas juntas AMARILLAS */}
                     <img src={star3} className="w-[26px]  object-contain absolute top-[12%] left-[3%] rotate-0" />
@@ -53,12 +56,20 @@ export default function BackgroundMobile() {
                     <img src={star6} className="w-[50px]  object-contain absolute top-[3%] left-[7%] " />
 
                     {/*cruz MORADA aqua con 4 puntos en el medio*/}
-                    <img src={star7} className="w-[26px]   object-contain absolute top-[5%] right-[12%] " />
+                    <img src={star7} className="w-[30px]   object-contain absolute top-[65%] right-[3%] " />
 
                     {/*cruz azul aqua con 4 puntos en el medio*/}
-                    <img src={star8} className="w-[20px] object-contain absolute top-[0%] left-[0%] " />
+                    <img src={star8} className="w-[20px] object-contain absolute top-[1%] left-[0%] " />
 
+                    {/*cruz azul aqua con 4 puntos en el medio*/}
+                    <img src={star8} className="w-[25px] object-contain absolute top-[70%] left-[2%] " />
+
+                    {/*punto morado*/}
+                    <img src={star5} className="w-[5px] object-contain absolute  top-[62%] left-[6%]" /> 
                     
+                    {/*punto morado*/}
+                    <img src={star5} className="w-[5px] object-contain absolute  top-[50%] right-[6%]" /> 
+
                     {/*circulo de puntos AMRAILLO*/}
                     <img src={star10} className="w-[25px]  object-contain absolute top-[8%] right-[30%]" />
 
@@ -73,13 +84,7 @@ export default function BackgroundMobile() {
                     yPosition="top-[4%]"
                 />
 
-                <MovingCloud
-                    imageUrl={nube1}
-                    direction="left-to-right"
-                    size={{ width: 'w-[74px]', height: 'h-[50px]' }}
-                    speed={1}
-                    yPosition="top-1/2"
-                />
+
 
                 <MovingCloud
                     imageUrl={nube2}

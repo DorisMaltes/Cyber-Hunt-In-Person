@@ -19,7 +19,7 @@ export default function MobileView() {
             <main className="relative z-10 flex flex-col items-center justify-center text-white text-center px-4 py-16  pt-[300px]">
                 <BackgroundMusic iconSize="w-8 h-8"/> 
                     
-                <img src={logo} alt="CyberHunt Logo" className="object-contain"/> 
+                <img src={logo} alt="CyberHunt Logo" className="object-contain animate-bounce"/> 
 
                 <div className="flex flex-col   pt-14">
                     
@@ -45,10 +45,6 @@ export default function MobileView() {
 
 
             </main>
-
-
-            
-
         
 
             <Footer/>
