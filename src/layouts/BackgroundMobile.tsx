@@ -20,7 +20,7 @@ export default function BackgroundMobile() {
         <div className="fixed inset-0 -z-10 bg-cover bg-center bg-[#15054E]">
 
                
-                <div className="relative w-full h-screen">
+                <div className="relative h-svh w-svw">
 
 
                     {/* estrella MORADA con 4 circurlos y cruz*/}

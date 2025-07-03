@@ -11,6 +11,7 @@ import Registration from './pages/Registration'
 //principal pages
 import MobileView from './MobileView'
 import DesktopView from './DesktopView'
+import Home from './pages/Home';
 
 
 
@@ -31,6 +32,8 @@ function App() {
           <Route path='/login' element={<Login/>}/>
 
           <Route path='/register' element={<Registration/>}/>
+
+          <Route path='/home' element={<Home/>}/>
 
 
         </Routes>

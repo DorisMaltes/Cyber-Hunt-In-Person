@@ -20,14 +20,14 @@ export default function Registration() {
         <div className="w-full max-w-xs flex flex-col items-center space-y-4">
          
          
-          {/* Flecha y título */}
+         {/* Arrow y title */}
         <div className="flex flex-col items-start  space-y-2 w-full max-w-full">
             <ImageButton to="/" image={arrow} size="w-[50px] h-[50px]" />
             <p className="font-game text-[#FFB800] text-3xl pt-4">Register!</p>
         </div>
 
 
-          {/* Formulario */}
+          {/* Registration Form */}
           <RegistrationForm />
 
           {/* Botón de registro */}
@@ -36,7 +36,7 @@ export default function Registration() {
               image={registerButton}
               onClick={() => console.log("Registro enviado")}
               to="/"
-              size="w-[160px] h-[50px]"
+              size="w-48 h-20"
             />
           </div>
         </div>
