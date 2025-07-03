@@ -1,6 +1,6 @@
 import Footer from "./layouts/footerDektop";
 import BackgroundDesktop from "./layouts/BackgroundDesktop";
-import logo from "./assets/CyberHunt-Logo.png"
+import logo from "./assets/imgs/CyberHunt-Logo.png"
 import BackgroundMusic from "./components/BackgroundMusic"
 
 

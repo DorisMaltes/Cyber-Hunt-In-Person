@@ -2,8 +2,8 @@
 import React, { useRef, useState } from "react";
 import music from "./../assets/music.mp3";
 
-import volumeOn from "../assets/SpeakerWave.gif";
-import volumeOff from "../assets/SpeakerXMarc.png";
+import volumeOn from "../assets/imgs/SpeakerWave.gif";
+import volumeOff from "../assets/imgs/SpeakerXMarc.png";
 
 interface BackgroundMusicProps {
   iconSize?: string; // tailwind class (e.g., "w-20 h-20")

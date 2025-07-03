@@ -5,8 +5,8 @@ import star2 from "../assets/stars/star2GIF.gif"
 import star3 from "../assets/stars/star3GIF.gif"
 import star5 from "../assets/stars/star5.png"
 
-import nube1 from "../assets/nube1.png"
-import nube2 from "../assets/nube2.png"
+import nube1 from "../assets/imgs/nube1.png"
+import nube2 from "../assets/imgs/nube2.png"
 
 import star6 from "../assets/stars/estrella6.gif"
 import star7 from "../assets/stars/estrella7.gif";

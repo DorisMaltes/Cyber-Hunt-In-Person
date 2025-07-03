@@ -5,8 +5,8 @@ import star2 from "../assets/stars/star2GIF.gif"
 import star3 from "../assets/stars/star3GIF.gif"
 import star5 from "../assets/stars/star5.png"
 
-import nube1 from "../assets/nube1.png"
-import nube2 from "../assets/nube2.png"
+import nube1 from "../assets/imgs/nube1.png"
+import nube2 from "../assets/imgs/nube2.png"
 
 import star6 from "../assets/stars/estrella6.gif"
 import star7 from "../assets/stars/estrella7.gif";
@@ -22,36 +22,45 @@ export default function BackgroundMobile() {
                
                 <div className="relative w-full h-screen">
 
-                     <img src={star2} className="w-[30px] object-contain absolute top-[30%] left-[10%]" />
 
-                      <img src={star1} className="w-[20px] object-contain absolute top-[40%] left-[49px]" />
+                    {/* estrella MORADA con 4 circurlos y cruz*/}
+                     <img src={star2} className="w-[46px] object-contain absolute top-[15%] left-[60%]" />
 
-                      <img src={star3} className="w-[20px] rotate-45 object-contain absolute top-[2%] left-[2%]" />
+                    {/*estrella azul AQUA */}
+                      <img src={star1} className="w-[25px] object-contain absolute top-[0%] left-[42%]" />
 
-                      <img src={star8} className="h-[20px] rotate-1 object-contain absolute top-[30%] right-[15px]" />
+                    {/* estrella normal AMARILLA*/}
+                      <img src={star3} className="w-[20px] rotate-45 object-contain absolute top-[10%] left-[28%]" />
 
-                      <img src={star3} className="w-[46px] h-[46px] rotate-45 object-contain absolute top-[25%] right-[10%]" />
+                    {/* estrella AQUA con 4 ciruclos en el medio y cruz*/}
+                      <img src={star8} className="h-[35px] rotate-1 object-contain absolute top-[12%] right-[1%]" />
+
+                    {/*estrella amarilla normal*/}
+                      <img src={star3} className="w-[30px] rotate-45 object-contain absolute top-[1%] right-[20%]" />
 
                     {/*punto morado*/}
-                    <img src={star5} className="w-[10px] object-contain absolute top-1/2 right-[5%]" /> 
+                    <img src={star5} className="w-[5px] object-contain absolute top-[6%] right-[52%]" /> 
 
-                    <img src={star3} className="w-[26px]  object-contain absolute top-[0%] left-1/2 rotate-0" />
+
+                     {/*punto morado*/}
+                    <img src={star5} className="w-[5px] object-contain absolute top-[3%] left-[25%]" /> 
+
+                    {/*4 estrellas juntas AMARILLAS */}
+                    <img src={star3} className="w-[26px]  object-contain absolute top-[12%] left-[3%] rotate-0" />
 
                     
                     {/*4 puntos MORADS*/}
-                    <img src={star6} className="w-[50px]  object-contain absolute top-[50%] left-[30%] " />
+                    <img src={star6} className="w-[50px]  object-contain absolute top-[3%] left-[7%] " />
 
                     {/*cruz MORADA aqua con 4 puntos en el medio*/}
-                    <img src={star7} className="w-[26px]   object-contain absolute top-[3%] right-[2%] " />
+                    <img src={star7} className="w-[26px]   object-contain absolute top-[5%] right-[12%] " />
 
                     {/*cruz azul aqua con 4 puntos en el medio*/}
-                    <img src={star8} className="w-[20px] object-contain absolute top-[50%] left-[50%] " />
+                    <img src={star8} className="w-[20px] object-contain absolute top-[0%] left-[0%] " />
 
-                    {/*circulo de puntos azul aqua*/}
-                    <img src={star9} className="w-[20px]  object-contain absolute top-[65%] left-[15%] " />
-
+                    
                     {/*circulo de puntos AMRAILLO*/}
-                    <img src={star10} className="w-[20px]  object-contain absolute top-[30%] left-[45%]" />
+                    <img src={star10} className="w-[25px]  object-contain absolute top-[8%] right-[30%]" />
 
 
                 </div>
@@ -61,12 +70,12 @@ export default function BackgroundMobile() {
                     direction="left-to-right"
                     size={{ width: 'w-[74px]', height: 'h-[50px]' }}
                     speed={1}
-                    yPosition="top-0"
+                    yPosition="top-[4%]"
                 />
 
                 <MovingCloud
                     imageUrl={nube1}
-                    direction="right-to-left"
+                    direction="left-to-right"
                     size={{ width: 'w-[74px]', height: 'h-[50px]' }}
                     speed={1}
                     yPosition="top-1/2"
@@ -75,10 +84,19 @@ export default function BackgroundMobile() {
                 <MovingCloud
                     imageUrl={nube2}
                     direction="right-to-left"
-                    size={{ width: 'w-[74px]', height: 'h-[50px]' }}
+                    size={{ width: 'w-[94px]', height: 'h-[50px]' }}
                     speed={0.5}
                     yPosition="top-[30%]"
                 />
+
+                 <MovingCloud
+                    imageUrl={nube2}
+                    direction="left-to-right"
+                    size={{ width: 'w-[100px]', height: 'h-[50px]' }}
+                    speed={0.5}
+                    yPosition="bottom-[15%]"
+                />
+
 
         </div>
     );
