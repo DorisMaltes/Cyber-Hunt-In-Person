@@ -30,6 +30,8 @@ export default function MobileView() {
                         alt="Log In Page"
                     />
 
+                    
+
                     <br />
 
                     <ImageButton

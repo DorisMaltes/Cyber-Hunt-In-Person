@@ -12,7 +12,8 @@ import Registration from './pages/Registration'
 import MobileView from './MobileView'
 import DesktopView from './DesktopView'
 import Home from './pages/Home';
-
+import ScanQR from './pages/ScanQR';
+import LeaderBoard from "./pages/LeaderBoard"
 
 
 
@@ -34,6 +35,10 @@ function App() {
           <Route path='/register' element={<Registration/>}/>
 
           <Route path='/home' element={<Home/>}/>
+
+          <Route path='/scan' element={<ScanQR/>}/>
+
+          <Route path='/leaderboard' element={<LeaderBoard/>}/>
 
 
         </Routes>
