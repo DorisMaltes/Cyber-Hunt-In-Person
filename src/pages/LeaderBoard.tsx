@@ -45,9 +45,7 @@ export default function LeaderBoard(){
 
                <LeaderBoardContainer/>
 
-
-                <p className="text-white font-sourceCodeFont text-2xl text-center pb-10">Scan QR to start hunting!</p>
-               
+               <br />
 
                 
 

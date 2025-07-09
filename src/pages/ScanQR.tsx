@@ -55,5 +55,5 @@ export default function ScanQR(){
             
             <Footer/>
         </div>
-    )
+    );
 }

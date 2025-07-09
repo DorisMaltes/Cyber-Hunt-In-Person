@@ -14,6 +14,12 @@ import DesktopView from './DesktopView'
 import Home from './pages/Home';
 import ScanQR from './pages/ScanQR';
 import LeaderBoard from "./pages/LeaderBoard"
+import AlreadyVisitedBooth from './pages/AlreadyVisitedBooth';
+import ChooseDificultyPage from "./pages/ChooseDificultyPage"
+import QuestionPage from './pages/QuestionsPage'; 
+
+import SummaryPage from './pages/SummaryPage';
+
 
 
 
@@ -39,6 +45,14 @@ function App() {
           <Route path='/scan' element={<ScanQR/>}/>
 
           <Route path='/leaderboard' element={<LeaderBoard/>}/>
+
+          <Route path='/alreadyVisited' element={<AlreadyVisitedBooth/>}/>
+
+          <Route path='/chooseDifficulty' element={<ChooseDificultyPage/>}/>
+
+          <Route path='/questionPage' element={<QuestionPage/>}/>
+
+          <Route path='/summaryPage' element={<SummaryPage/>}/>
 
 
         </Routes>
