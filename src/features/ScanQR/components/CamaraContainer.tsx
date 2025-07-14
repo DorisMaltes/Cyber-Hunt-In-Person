@@ -1,14 +1,23 @@
-//assets
-import YellowCard from "../../../assets/imgs/YellowCardComponent.png";
+import { QRScanner } from './QRScanner';
+import { useQRScanner } from '../hooks/useQRScanner';
+import { useState } from 'react';
 
-export default function CamaraContainer() {
+export const CamaraContainer = () => {
+  const { handleScan } = useQRScanner();
+  const [cameraError, setCameraError] = useState('');
+
   return (
-    <div className="relative w-fit h-fit">
-      <img src={YellowCard} alt="Yellow Card" className="w-full h-auto" />
-      <div className="absolute inset-0 flex justify-center items-center">
-        <p className="text-black">The Camera Will Be Here :))</p>
-      </div>
+    <div className="relative w-full max-w-md h-96 mx-auto overflow-hidden rounded-xl border-4 border-yellow-400 bg-black">
+      {cameraError ? (
+        <div className="flex items-center justify-center h-full text-white">
+          Error: {cameraError}
+        </div>
+      ) : (
+        <QRScanner 
+          onScan={handleScan} 
+          onError={(error) => setCameraError(error.message)}
+        />
+      )}
     </div>
   );
-}
-
+};

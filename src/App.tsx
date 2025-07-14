@@ -1,10 +1,12 @@
 import './App.css'
+
+//custom hook to detect de device 
 import useDeviceDetect from './hooks/useDeviceDetect'
 
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-//pages
+//First Pages
 import Login from './pages/Login';
 import Registration from './pages/Registration'
 
@@ -17,8 +19,8 @@ import LeaderBoard from "./pages/LeaderBoard"
 import AlreadyVisitedBooth from './pages/AlreadyVisitedBooth';
 import ChooseDificultyPage from "./pages/ChooseDificultyPage"
 import QuestionPage from './pages/QuestionsPage'; 
-
 import SummaryPage from './pages/SummaryPage';
+
 
 
 
@@ -26,6 +28,7 @@ import SummaryPage from './pages/SummaryPage';
 function App() {
 
   const { isMobile } = useDeviceDetect();
+  
 
   return (
     <BrowserRouter>

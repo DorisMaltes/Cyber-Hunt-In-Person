@@ -4,11 +4,29 @@ import loginButton from "../assets/buttons/botonLogIn.png"
 import BackgroundMobile from "../layouts/BackgroundMobile";
 import BackgroundMusic from "../components/BackgroundMusic";
 import Footer from "../layouts/footerDektop";
-import LogInForm from "../features/logIn/components/LogInForm"
+
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useLogin, LogInForm } from "../features/logIn/index";
+import type {LoginData} from "../features/logIn/index"
 
 
 
 export default function Login(){
+
+  const [formData, setFormData] = useState<LoginData | null>(null);
+  const navigate = useNavigate();
+
+  const { mutate, isLoading, isError, error } = useLogin((uid) => {
+    navigate("/home");
+  });
+
+  const handleLogin = () => {
+    if (formData) {
+      mutate(formData);
+    }
+  };
+
     return(
         <div className="min-h-screen flex flex-col items-center justify-between relative">
         
@@ -30,18 +48,19 @@ export default function Login(){
 
 
           {/* lOG iN FORM */}
-            <LogInForm/>
+            <LogInForm onSubmit={setFormData}/>
           
           {/* Log in Button */}
           <div>
             <ImageButton
               image={loginButton}
-              onClick={() => console.log("Log in exitoso")}
-              to="/home"
+              onClick={handleLogin}
               size="w-48 h-20"
             />
-
           </div>
+
+           {isLoading && <p className="text-white">Log In... </p>}
+          {isError && <p className="text-red-500 text-sm">{(error as any).message}</p>}
         </div>
       </main>
 

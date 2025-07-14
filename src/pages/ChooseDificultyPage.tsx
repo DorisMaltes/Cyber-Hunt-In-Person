@@ -3,7 +3,7 @@ import BackgroundMobile from "../layouts/BackgroundMobile";
 import Footer from "../layouts/footerDektop";
 
 //assets imports
-import botonToHome from "../assets/imgs/flecha.png"
+// import botonToHome from "../assets/imgs/flecha.png"
 import Easybutton from "../assets/buttons/Easy_Button.png"
 import hardButton from  "../assets/buttons/Hard_Button.png"
 import logo from "../assets/imgs/CyberHunt-Logo.png"

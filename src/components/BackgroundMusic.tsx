@@ -1,5 +1,5 @@
 // components/BackgroundMusic.tsx
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import music from "./../assets/music.mp3";
 
 import volumeOn from "../assets/imgs/SpeakerWave.gif";

@@ -6,8 +6,8 @@ import BackgroundMobile from "../layouts/BackgroundMobile";
 
 
 // import assets 
-import logo from "../assets/imgs/CyberHunt-Logo.png"
-import arrow from "../assets/imgs/flecha.png"; 
+// import logo from "../assets/imgs/CyberHunt-Logo.png"
+// import arrow from "../assets/imgs/flecha.png"; 
 import HomeButton from "../assets/buttons/HomeButton.png"
 
 //import components

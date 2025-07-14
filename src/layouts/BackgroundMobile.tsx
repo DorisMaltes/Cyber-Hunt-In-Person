@@ -11,7 +11,7 @@ import nube2 from "../assets/imgs/nube2.png"
 import star6 from "../assets/stars/estrella6.gif"
 import star7 from "../assets/stars/estrella7.gif";
 import star8 from "../assets/stars/estrella8.gif"
-import star9 from "../assets/stars/estrella9.png"
+// import star9 from "../assets/stars/estrella9.png"
 import star10 from "../assets/stars/estrella10.gif"
 
 

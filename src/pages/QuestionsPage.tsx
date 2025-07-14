@@ -1,7 +1,7 @@
 //Layout Imports
 import BackgroundMobile from "../layouts/BackgroundMobile";
 import Footer from "../layouts/footerDektop";
-import BackgroundMusic from "../components/BackgroundMusic";
+// import BackgroundMusic from "../components/BackgroundMusic";
 
 //assets imports
 import submit from "../assets/buttons/SubmitButton.png"

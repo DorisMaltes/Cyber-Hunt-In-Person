@@ -1,13 +1,16 @@
+import type React from "react";
 import inputImage from "../assets/imgs/input.png"
 
 interface ImageInputProps{
   type: string;
   placeholder: string;
   inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"];
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 
-export default function ImageInput({type, placeholder, inputMode= "text",}:ImageInputProps ){
+export default function ImageInput({type, placeholder, inputMode= "text",value, onChange}:ImageInputProps ){
     //aqui iran la funcion que haran los inputs :)) los podemos traer de hooks especificos de feutures
   
   return(
@@ -24,6 +27,8 @@ export default function ImageInput({type, placeholder, inputMode= "text",}:Image
         type={type}
         placeholder={placeholder}
         inputMode={inputMode}
+        value={value}
+        onChange={onChange}
         className="
           block       /* para que respete el width */
           w-full      /* ocupe el 100% del padre */
@@ -31,6 +36,7 @@ export default function ImageInput({type, placeholder, inputMode= "text",}:Image
           max-w-full  /* nunca lo supere */
           font-sourceCodeFont text-xl text-[#5323C7] font-bold
         "
+        
       />
     </div>
         

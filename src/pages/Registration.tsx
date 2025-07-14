@@ -1,13 +1,38 @@
-import RegistrationForm from "../features/registration/components/RegistrationForm";
+// import RegistrationForm from "../features/registration/components/RegistrationForm";
 import ImageButton from "../components/ImageButton";
 import arrow from "../assets/imgs/flecha.png";
 import registerButton from "../assets/buttons/registerButton.png";
 
+//layput imports
 import BackgroundMobile from "../layouts/BackgroundMobile";
 import BackgroundMusic from "../components/BackgroundMusic";
 import Footer from "../layouts/footerDektop";
 
+//imports
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { RegistrationForm, useRegister } from "../features/registration";
+import type {RegisterData} from "../features/registration/api/registerUser"
+
+
+
+
 export default function Registration() {
+
+  const [formData, setFormData] = useState<RegisterData | null>(null);
+  const navigate = useNavigate();
+
+  const { mutate, isLoading, isError, error } = useRegister(() => {
+    navigate("/login");
+  });
+
+  const handleSubmit = () => {
+    if (formData) {
+      mutate(formData);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-between relative">
         
@@ -28,17 +53,20 @@ export default function Registration() {
 
 
           {/* Registration Form */}
-          <RegistrationForm />
+          <RegistrationForm onSubmit={setFormData}/>
 
-          {/* Botón de registro */}
+          {/* Botóncito de registro */}
           <div>
             <ImageButton
               image={registerButton}
-              onClick={() => console.log("Registro enviado")}
-              to="/"
+              onClick={handleSubmit}
               size="w-48 h-20"
             />
           </div>
+
+          {isLoading && <p className="text-white">Registrando...</p>}
+          {isError && <p className="text-red-500 text-sm">{(error as any).message}</p>}
+
         </div>
       </main>
 
