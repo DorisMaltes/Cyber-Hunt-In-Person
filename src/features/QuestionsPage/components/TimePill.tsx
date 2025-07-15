@@ -1,26 +1,27 @@
-//this is the component for the pill that shows the time
+import AquaPill from "../../../assets/imgs/AquaPill.png";
+import clock from "../../../assets/imgs/clock.png";
 
-//assets imports
-import AquaPill from "../../../assets/imgs/AquaPill.png"
-import clock from "../../../assets/imgs/clock.png"
+interface TimePillProps {
+  time: number;
+}
 
-export default function TimePill(){
-    return(
-        <>
-            <div style={{ 
-                        backgroundImage: `url(${AquaPill})`,
-                        width: "183px",
-                        height: "50px",
-                        backgroundSize: "contain", // o "100% 100%" si quieres que llene exactamente
-                        backgroundRepeat: "no-repeat",
-                        backgroundPosition: "center"}}
-                    className="flex justify-center items-center">
-                
-                <div className="flex flex-row gap-3 items-center justify-center">
-                    <img src={clock} alt="clock" />
-                    <p className="text-[#4E0BBC] text-2xl font-game">1</p>
-                </div>
-            </div>
-        </>
-    );
+export default function TimePill({ time }: TimePillProps) {
+  return (
+    <div
+      style={{
+        backgroundImage: `url(${AquaPill})`,
+        width: "183px",
+        height: "50px",
+        backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      }}
+      className="flex justify-center items-center"
+    >
+      <div className="flex flex-row gap-3 items-center justify-center">
+        <img src={clock} alt="clock" className="w-6 h-6" />
+        <p className="text-purple-800 text-2xl font-game">{time}s</p>
+      </div>
+    </div>
+  );
 }
