@@ -23,7 +23,7 @@ export default function Registration() {
   const [formData, setFormData] = useState<RegisterData | null>(null);
   const navigate = useNavigate();
 
-  const { mutate, isLoading, isError, error } = useRegister(() => {
+  const { mutate, isPending, isError, error } = useRegister(() => {
     navigate("/login");
   });
 
@@ -64,8 +64,11 @@ export default function Registration() {
             />
           </div>
 
-          {isLoading && <p className="text-white">Registrando...</p>}
-          {isError && <p className="text-red-500 text-sm">{(error as any).message}</p>}
+          {isPending && <p className="text-white">Registrando...</p>}
+          
+
+          
+          {isError && <p className="text-red-500 text-sm">{(error as any).message}</p>} */
 
         </div>
       </main>

@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
-import type { BoothType } from "../types";
 
 export const useQRScanner = () => {
   const navigate = useNavigate();
