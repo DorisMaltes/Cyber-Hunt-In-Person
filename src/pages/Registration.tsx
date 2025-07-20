@@ -43,8 +43,8 @@ export default function Registration() {
       <main className="relative z-10 flex flex-col items-center justify-center w-screen px-4 pt-4">
         {/* components container */}
         <div className="w-full max-w-xs flex flex-col items-center space-y-4">
-         
-         
+        
+        
          {/* Arrow y title */}
         <div className="flex flex-col items-start  space-y-2 w-full max-w-full">
             <ImageButton to="/" image={arrow} size="w-[50px] h-[50px]" />
@@ -64,11 +64,14 @@ export default function Registration() {
             />
           </div>
 
-          {isPending && <p className="text-white">Registrando...</p>}
+          {isPending && <p className="text-white">Registering...</p>}
           
-
+          {/* Error Message 
+            Documentation, para saber como se manejan los errores de firebase. para el registro de usuario. Dejo pendiente, 🚩🚩!!
+            https://firebase.google.com/docs/reference/js/v8/firebase.auth.Auth#createuserwithemailandpassword
+          */}
           
-          {isError && <p className="text-red-500 text-sm">{(error as any).message}</p>} */
+          {isError && <p className="text-red-500 text-sm">{(error as any).message}</p>} 
 
         </div>
       </main>

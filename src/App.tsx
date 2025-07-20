@@ -20,6 +20,7 @@ import AlreadyVisitedBooth from './pages/AlreadyVisitedBooth';
 import ChooseDificultyPage from "./pages/ChooseDificultyPage"
 import QuestionPage from './pages/QuestionsPage'; 
 import SummaryPage from './pages/SummaryPage';
+import QuizPage from './pages/QuizPage';
 
 
 
@@ -56,6 +57,8 @@ function App() {
           <Route path='/questionPage' element={<QuestionPage/>}/>
 
           <Route path='/summaryPage' element={<SummaryPage/>}/>
+
+          <Route path='/quiz' element={<QuizPage/>}/>
 
 
         </Routes>

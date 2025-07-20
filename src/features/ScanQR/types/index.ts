@@ -7,7 +7,7 @@ export interface BoothData {
 }
 
 // Añade esta interfaz para las props del QRScanner
-export interface QRScannerProps {
+export type QRScannerProps = {
     onScan: (data: string) => void;
     onError?: (error: Error) => void;
 

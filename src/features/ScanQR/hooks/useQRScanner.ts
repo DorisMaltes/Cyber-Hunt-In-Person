@@ -18,7 +18,8 @@ export const useQRScanner = () => {
     } else if (relativePath.includes("/game") || relativePath.includes("/random")) {
       navigate(relativePath);
     } else {
-      alert("QR no válido.");
+      alert("QR code not valid. Scan Again.");
+      navigate('/home');
     }
   };
 
