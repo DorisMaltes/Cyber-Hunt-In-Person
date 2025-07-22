@@ -13,6 +13,7 @@ export default function LeaderBoardContainer() {
   const [page, setPage] = useState(0);
   const { data, isLoading, isError } = useLeaderboardData();
 
+  
   if (isLoading) return <p className="text-white">Loading leaderboard...</p>;
   if (isError || !data) return <p className="text-red-500">Error loading leaderboard</p>;
 
@@ -28,7 +29,7 @@ export default function LeaderBoardContainer() {
 
         <div className="absolute inset-0 flex justify-center items-center m-10 flex-col pb-7">
           <div className="bg-white h-full w-full overflow-y-auto p-4 rounded-lg">
-            <ol className="text-[#7920FF] list-decimal font-sourceCodeFont text-xl pl-10">
+            <ol className="text-[#7920FF] list-decimal font-sourceCodeFont text-xl">
               {pagePlayers.map((player: any, index: number) => {
                 const globalIndex = page * pageSize + index;
                 const isCurrentUser = player.id === userId;
@@ -36,7 +37,7 @@ export default function LeaderBoardContainer() {
                 return (
                   <li
                     key={player.id}
-                    className={`mb-1 ${isCurrentUser ? "font-bold text-[#D97706]" : ""}`}
+                    className={`mb-1 ${isCurrentUser ? "font-bold text-[#C88D00]" : ""} list-none`}
                   >
                     {globalIndex + 1}. {player.name || "Player"} — {player.score || 0} pts
                     {globalIndex === 0 && " 👑"}
@@ -71,7 +72,7 @@ export default function LeaderBoardContainer() {
         {/* Show Use'r Ranking if they are outside of the global */}
         {userRank && userRank > (page + 1) * pageSize && (
           <div className="mt-4 text-center bg-white rounded-lg px-4 py-2 text-[#7920FF] font-sourceCodeFont">
-            🔍 Tu posición: {userRank}°
+            🔍 Your position: {userRank}°
           </div>
         )}
       </div>

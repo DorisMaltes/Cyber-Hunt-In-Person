@@ -12,6 +12,8 @@ export default defineConfig({
     // Agrega esto para permitir el host de ngrok:
     allowedHosts: [
       '3e51dd6a54f2.ngrok-free.app',
+      'a4fe866ecce0.ngrok-free.app',
+      
       '.ngrok-free.app' // Permite cualquier subdominio ngrok
     ]
   },

@@ -18,8 +18,6 @@ interface RegistrationFormProps{
     }) => void;
 }
 
-
-
 export default function RegistrationForm({onSubmit}: RegistrationFormProps){
     const [formData, setFormData] = useState({
         name: "",
@@ -32,12 +30,12 @@ export default function RegistrationForm({onSubmit}: RegistrationFormProps){
     });
 
     useEffect(() => {
-    onSubmit(formData);
-  }, [formData, onSubmit]);
+        onSubmit(formData);
+    }, [formData, onSubmit]);
 
-  const handleChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-  };
+    const handleChange = (field: string, value: string) => {
+        setFormData((prev) => ({ ...prev, [field]: value }));
+    };
 
     return(
         <div className="relative inline-block">
@@ -46,7 +44,7 @@ export default function RegistrationForm({onSubmit}: RegistrationFormProps){
             <div className="absolute inset-0 overflow-y-auto flex items-center justify-center">
                 
                 <div className="flex flex-col items-center justify-between h-full w-full p-6">
-                   
+                
                     <ImageInput type="text" placeholder="Name" value={formData.name} onChange={(e) => handleChange("name", e.target.value)} />
                     <ImageInput type="text" placeholder="Title" value={formData.title} onChange={(e) => handleChange("title", e.target.value)}/>
                     <ImageInput type="text" placeholder="Company" value={formData.company} onChange={(e) => handleChange("company", e.target.value)}/>

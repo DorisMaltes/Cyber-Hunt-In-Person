@@ -9,6 +9,7 @@ interface ImageButtonProps {
   size?: string;
   alt?: string;
   className?: string;
+  disabled?: boolean;
 }
 
 export default function ImageButton({
@@ -17,11 +18,13 @@ export default function ImageButton({
   image,
   size = "w-40 h-16",
   alt = "Button",
-  className
+  className,
+  disabled = false
 }: ImageButtonProps) {
   const navigate = useNavigate();
 
   const handleClick = () => {
+    if (disabled) return;
     if (onClick) onClick();     // excutes the function first
     if (to) navigate(to);       // Luego navega
   };
@@ -29,7 +32,10 @@ export default function ImageButton({
   return (
     <button
       onClick={handleClick}
-      className={`bg-no-repeat bg-center bg-contain ${size} ${className}`}
+      disabled={disabled}
+      className={`bg-no-repeat bg-center bg-contain ${size} ${className} ${
+        disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
+      }`}
       style={{ backgroundImage: `url(${image})` }}
       aria-label={alt}
     />

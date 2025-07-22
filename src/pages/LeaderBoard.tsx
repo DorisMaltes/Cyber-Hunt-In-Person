@@ -27,25 +27,24 @@ export default function LeaderBoard(){
             
 
             <div className="h-svh w-svw flex flex-col items-center justify-between px-4 relative z-10 gap-8">
-               <BackgroundMusic iconSize="w-8 h-8"/> 
+                <BackgroundMusic iconSize="w-8 h-8"/> 
 
-               <div className="w-full pt-5">
-                    
+                <div className="w-full pt-5"> 
                     <ImageButton
                         to="/home"
                         image={botonToHome} 
                         size="w-[60px] h-[60px]"
                     />
-               </div>
-               
-               <div className="relative text-center">
+                </div>
+            
+                <div className="relative text-center">
                     <p className="text-white font-game text-[32px] font-normal ">LeaderBoard</p>
                 </div>
 
 
-               <LeaderBoardContainer/>
+                <LeaderBoardContainer/>
 
-               <br />
+                <br />
 
                 
 

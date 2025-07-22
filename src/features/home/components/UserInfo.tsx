@@ -7,16 +7,15 @@ type UserData = {
 };
 
 export default function UserInfo() {
-  const { data, isLoading, isError } = useUserData() as { 
-    data: UserData; 
-    isLoading: boolean; 
-    isError: boolean;
-  };
-
+  const { data, isLoading, isError } = useUserData();
+  
+  //handling of errors using TanStack 
   if (isLoading) return <p className="text-white font-game text-xl">Loading...</p>;
-  if (isError || !data) return <p className="text-red-500 font-game">Error loading user data</p>;
+  if (isError || !data || typeof data.name !== "string" || typeof data.score !== "number") {
+    return <p className="text-red-500 font-game">Error loading user data</p>;
+  }
 
-  const { name, score, visited_booths = [] } = data;
+  const { name, score, visited_booths = [] } = data as UserData;
 
   return (
     <>

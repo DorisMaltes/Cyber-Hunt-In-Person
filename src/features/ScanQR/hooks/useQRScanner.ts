@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
-import type { BoothType } from "../types";
 
 export const useQRScanner = () => {
   const navigate = useNavigate();
@@ -16,10 +15,15 @@ export const useQRScanner = () => {
 
     if (relativePath.includes("/booths/")) {
       await handleBoothScan(relativePath);
-    } else if (relativePath.includes("/game") || relativePath.includes("/random")) {
+    } else if (relativePath.includes("/game")) {
+      // Handle game URLs like /game?boothId=game1&game=tictactoe
+      navigate(relativePath);
+    } else if (relativePath.includes("/random")) {
+      // Handle random URLs like /random/roulette?boothId=random1
       navigate(relativePath);
     } else {
-      alert("QR no válido.");
+      alert("QR code not valid. Scan Again.");
+      navigate('/home');
     }
   };
 

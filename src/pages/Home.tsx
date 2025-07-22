@@ -21,8 +21,8 @@ export default function Home() {
       <BackgroundMobile />
 
       <div className="h-svh w-svw flex flex-col items-center justify-between py-6 px-4 relative z-10">
-        {/* Música de fondo */}
-        <BackgroundMusic iconSize="w-8 h-8" />
+        {/* Música de fondo 
+        <BackgroundMusic iconSize="w-8 h-8" />*/}
 
         {/* Logo */}
         <img src={logo} alt="CyberHuntLogo" className="mb-2" />
