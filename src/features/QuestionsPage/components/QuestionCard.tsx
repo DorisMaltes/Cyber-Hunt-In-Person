@@ -10,9 +10,6 @@ import ImageButton from "../../../components/ImageButton";
 
 export default function QuestionCard(){
     
-    // const preguntasDummies = ["What is phishing?", "What is spoofing?"];
-    
-    // const opciones = ["Pedro", "Ricardo", "Penelope", "Jonas"];
 
     return(
 

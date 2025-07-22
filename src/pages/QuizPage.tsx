@@ -65,7 +65,7 @@ export default function QuizPage() {
       <Footer fixedBottom={false} />
       
       <div className="h-svh w-svw flex flex-col items-center justify-between px-4 relative z-10 gap-4">
-        <BackgroundMusic iconSize="w-8 h-8" />
+        {/**<BackgroundMusic iconSize="w-8 h-8" />**/}
         
         {/* Timer - only show when quiz is active */}
         {difficulty && currentQuestion && (
@@ -104,13 +104,15 @@ export default function QuizPage() {
         {!loadingBooth && !loadingProgress && !progressData && !showSummary && boothData && (
           <>
             {!difficulty && boothData.type === "questions" && (
-              <div className="flex flex-col items-center gap-4">
-                <h2 className="text-white font-game text-3xl text-center">
-                  Quiz for Booth: {boothId}
-                </h2>
-                <p className="text-white font-sourceCodeFont text-lg">
-                  Type: {boothData.type}
+              <div className="flex flex-col items-center gap-6 pt-16">
+                <p className="text-white font-game text-xl text-center">
+                  Booth {boothData.type}
                 </p>
+
+                <h1 className="text-white font-game text-4xl text-center">
+                  {boothData.name}
+                </h1>
+                
                 
                 <DifficultySelector
                   onSelectDifficulty={handleSelectDifficulty}

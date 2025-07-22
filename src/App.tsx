@@ -21,6 +21,8 @@ import ChooseDificultyPage from "./pages/ChooseDificultyPage"
 import QuestionPage from './pages/QuestionsPage'; 
 import SummaryPage from './pages/SummaryPage';
 import QuizPage from './pages/QuizPage';
+import GamePage from './pages/GamePage';
+import RandomPage from './pages/RandomPage';
 
 
 
@@ -60,6 +62,9 @@ function App() {
 
           <Route path='/quiz' element={<QuizPage/>}/>
 
+          <Route path='/game' element={<GamePage/>}/>
+
+          <Route path='/random/:randomType' element={<RandomPage/>}/>
 
         </Routes>
       

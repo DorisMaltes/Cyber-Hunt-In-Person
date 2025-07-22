@@ -1,4 +1,5 @@
 import clock from "../../../assets/imgs/clock.png";
+import AquaPill from "../../../assets/imgs/AquaPill.png"
 
 interface QuizTimerProps {
   elapsedTime: number;
