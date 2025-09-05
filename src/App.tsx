@@ -24,6 +24,8 @@ import QuizPage from './pages/QuizPage';
 import GamePage from './pages/GamePage';
 import RandomPage from './pages/RandomPage';
 
+import StoryLine from './StoryLine/StoryLine';
+
 
 
 
@@ -65,6 +67,8 @@ function App() {
           <Route path='/game' element={<GamePage/>}/>
 
           <Route path='/random/:randomType' element={<RandomPage/>}/>
+
+          <Route path='/storyLine' element={<StoryLine/>}/>
 
         </Routes>
       

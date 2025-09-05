@@ -38,8 +38,8 @@ export default function Login(){
         
         {/* components container */}
         <div className="w-full max-w-xs flex flex-col items-center space-y-4">
-         
-         
+        
+ 
           {/* Arrow y title */}
         <div className="flex flex-col items-start  space-y-2 w-full max-w-full">
             <ImageButton to="/" image={arrow} size="w-[50px] h-[50px]" />
@@ -59,8 +59,10 @@ export default function Login(){
             />
           </div>
 
-           {isLoading && <p className="text-white">Log In... </p>}
+          {isLoading && <p className="text-white">Log In... </p>}
+          
           {isError && <p className="text-red-500 text-sm">{(error as any).message}</p>}
+          
         </div>
       </main>
 

@@ -32,17 +32,15 @@ export default function AlreadyVisitedBooth(){
 
                     </div>
 
-                    <div className="text-center">
-                        <p className="text-white font-game text-xl pb-2">Points: 20</p>
-                    </div>
+                    <div className="text-center">                    </div>
 
                     <ImageButton
                         image={arrow}
                         className="w-24 h-24"
                         to="/home"
                     />
-                     
-                   
+                
+                  
                     
                 </div>
             <Footer/>
