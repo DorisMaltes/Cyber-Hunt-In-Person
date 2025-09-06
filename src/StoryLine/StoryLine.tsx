@@ -6,6 +6,15 @@ import personaje2 from './markGif.png';
 import computerVirus from '/Users/doriselena/Desktop/my-project/src/StoryLine/computadoraVirusAnimacion.gif';
 import computerVirus2 from "/Users/doriselena/Desktop/my-project/src/StoryLine/computadoraVirusAnimacion.gif";
 import wallpaper from "/Users/doriselena/Desktop/my-project/src/StoryLine/wallpaper.png";
+import markTriste from "./../StoryLine/markTriste.png";
+import crown from "../assets/imgs/crown.png";
+import virusDying from "./virusDies.png";
+import virusInComputerImage from "./computerVirus.png";
+
+import scanQR from "./../StoryLine/scan.png";
+
+
+import computadora from "./../StoryLine/gifComputadora.png";
 
 import mark1 from './mark1.png';
 
@@ -25,22 +34,29 @@ export default function StoryLine() {
     const dialogs = [
         "Another great day at GovWare! Let's finish these reports...",
         "Hmm? That’s strange… why is my screen lighting up?",
-        "Oh no! A virus just hit my system — right in the middle of Singapore International Cyber Week!",
+        "Oh no! A virus just hit my system — right in the middle of GovWare!",
         "I can't fix this on my own. I need your help!",
-        "To defeat the virus, you must answer scan qrs to answer questions.",
+        "To defeat the virus, you scan qrs...",
+        "to either answer questions or play games to earn points.",
         "Each correct answer will wipe out part of the infection and earn you points.",
         "Be careful though — wrong answers make the virus stronger!",
         "Can you clear the virus, restore my computer, and reach the top of the leaderboard?",
-        "Click Start when you're ready, and let's save this computer together."
+        "Continue when you're ready, and let's save this computer together!!"
     ];
 
     // Character images mapping for each dialog
     const characterImages = [
-        personaje2, 
-        personaje2, 
+        personaje2,
+        computadora, 
         computerVirus, 
-        computerVirus2,
-        personaje 
+        markTriste, 
+        scanQR,
+        crown,
+        virusDying,
+        virusInComputerImage,
+        personaje2,
+        personaje2
+
     ];
 
     // Get current character image based on dialog index
@@ -67,7 +83,7 @@ export default function StoryLine() {
         if (isEnding) {
             const timer = setTimeout(() => {
                 // Navigate to home page after fade out
-                navigate('/');
+                navigate('/firstPage');
             }, 1000); // Duration of fade out animation
             
             return () => clearTimeout(timer);

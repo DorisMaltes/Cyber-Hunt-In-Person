@@ -32,7 +32,7 @@ export default function UserInfo() {
       </div>
 
       <div className="text-center">
-        <p className="text-white font-game text-xl pb-2">Scanned QR's:</p>
+        <p className="text-white font-game text-xl pb-2">QRS scanned:</p>
         <p className="text-white font-sourceCodeFont text-5xl font-bold">
           {visited_booths.length}/5
         </p>

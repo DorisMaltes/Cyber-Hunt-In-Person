@@ -39,11 +39,11 @@ function App() {
     <BrowserRouter>
         <Routes>
           {isMobile ? (
-            <Route path='/' element={<MobileView />} />
+            <Route path='/' element={<StoryLine />} />
           ) : (
             <Route path='/' element={<DesktopView />} />
           )}
-
+          
           <Route path='/login' element={<Login/>}/>
 
           <Route path='/register' element={<Registration/>}/>
@@ -68,7 +68,7 @@ function App() {
 
           <Route path='/random/:randomType' element={<RandomPage/>}/>
 
-          <Route path='/storyLine' element={<StoryLine/>}/>
+          <Route path='/firstPage' element={<MobileView/>}/>
 
         </Routes>
       
