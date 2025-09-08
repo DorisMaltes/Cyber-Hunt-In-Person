@@ -12,12 +12,12 @@ interface MemoryCardProps {
 
 // Configuración de imágenes/símbolos - fácil de cambiar por imágenes reales
 const CARD_SYMBOLS = [
-  "🦠, "👾", "💻", "🛜", "🔐"
+  "🦠", "👾", "💻", "🛜", "🔐"
 ];
 
 // Función para crear pares de cartas
 const createCardPairs = () => {
-    const cards = [];
+    const cards: Array<{ id: number; symbol: string; isFlipped: boolean; isMatched: boolean }> = [];
     let id = 1;
   
   CARD_SYMBOLS.forEach(symbol => {
@@ -51,12 +51,14 @@ export const MemoryCard = ({ boothId }: MemoryCardProps) => {
     }
   }, [gameStarted]);
 
-  // Check for game completion
+  // Check for game completion or game over
   useEffect(() => {
     if (matchedPairs === totalPairs && gameStarted) {
       setGameResult("won");
+    } else if (moves > 10 && gameStarted) {
+      setGameResult("lost");
     }
-  }, [matchedPairs, totalPairs, gameStarted]);
+  }, [matchedPairs, totalPairs, moves, gameStarted]);
 
   const handleCardClick = (cardId: number) => {
     if (gameResult || flippedCards.length >= 2) return;
@@ -117,6 +119,9 @@ export const MemoryCard = ({ boothId }: MemoryCardProps) => {
       // Score based on moves (fewer moves = higher score)
       // Perfect game (5 moves) = 20 points, each extra move = -1 point
       finalScore = Math.max(5, 20 - Math.max(0, moves - totalPairs));
+    } else if (gameResult === "lost") {
+      // No points for losing
+      finalScore = 0;
     }
 
     saveGameResult({ finalScore });
@@ -236,18 +241,37 @@ export const MemoryCard = ({ boothId }: MemoryCardProps) => {
               
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 w-full text-center">
                 <div className="space-y-4">
-                  <h3 className="text-white font-game text-2xl">
-                    You Won! 🎉
-                  </h3>
-                  
-                  <div className="space-y-2">
-                    <p className="text-white font-sourceCodeFont text-lg">
+                  {gameResult === "won" ? (
+                    <>
+                      <h3 className="text-white font-game text-2xl">
+                        You Won! 🎉
+                      </h3>
+                      
+                      <div className="space-y-2">
+                        <p className="text-white font-sourceCodeFont text-lg">
                         Moves used: {moves}
-                    </p>
-                    <p className="text-white font-sourceCodeFont text-lg">
-                      Points: +{Math.max(5, 20 - Math.max(0, moves - totalPairs))}
-                    </p>
-                  </div>
+                        </p>
+                        <p className="text-white font-sourceCodeFont text-lg">
+                          Points: +{Math.max(5, 20 - Math.max(0, moves - totalPairs))}
+                        </p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <h3 className="text-white font-game text-2xl">
+                        Game Over! 😞
+                      </h3>
+                      
+                      <div className="space-y-2">
+                        <p className="text-white font-sourceCodeFont text-lg">
+                          Moves used: {moves} (Limit: 10)
+                        </p>
+                        <p className="text-white font-sourceCodeFont text-lg">
+                          Points: 0
+                        </p>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
 
@@ -264,6 +288,9 @@ export const MemoryCard = ({ boothId }: MemoryCardProps) => {
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 w-full text-center">
               <p className="text-white font-sourceCodeFont text-lg">
                 Find matching pairs by clicking on the cards!
+              </p>
+              <p className="text-white font-sourceCodeFont text-sm mt-2">
+                You have 10 moves to complete the game!
               </p>
             </div>
           )}

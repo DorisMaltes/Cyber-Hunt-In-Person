@@ -6,6 +6,8 @@ import ImageButton from "../../../components/ImageButton";
 import HomeButton from "../../../assets/buttons/HomeButton.png";
 import { useGame } from "../hooks/useGame";
 
+import MarkHappy from "../../../assets/markStory/MarkHappy.png"
+
 interface TicTacToeProps {
   boothId: string;
 }
@@ -164,7 +166,8 @@ export const TicTacToe = ({ boothId }: TicTacToeProps) => {
           </div>
 
           {/* Game Result Summary */}
-          {gameResult && (
+          {gameResult && 
+          (
             <div className="flex flex-col items-center gap-6 max-w-md mx-auto">
               <h2 className="text-white font-game text-3xl text-center">
                 Game Complete!
@@ -176,7 +179,7 @@ export const TicTacToe = ({ boothId }: TicTacToeProps) => {
                     {gameResult === "Tie" 
                       ? "It's a Tie!" 
                       : gameResult === "X" 
-                        ? "You Won! 🎉" 
+                        ? "You Won! 🎉 " 
                         : "You Lost! 😔"
                     }
                   </h3>

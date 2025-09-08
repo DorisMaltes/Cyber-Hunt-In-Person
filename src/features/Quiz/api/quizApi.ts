@@ -43,10 +43,25 @@ export const fetchQuestions = async (boothId: string, difficulty: DifficultyType
     );
     const questionsSnap = await getDocs(questionsRef);
 
-    return questionsSnap.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
+    const allQuestions = questionsSnap.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
     })) as Question[];
+
+    // Filter out invalid questions (empty options, missing required fields)
+    const validQuestions = allQuestions.filter(question => {
+        return question.question_text && 
+               question.options && 
+               Array.isArray(question.options) && 
+               question.options.length > 0 &&
+               question.correct_answer &&
+               typeof question.points_correct === 'number' &&
+               typeof question.points_incorrect === 'number';
+    });
+
+    console.log(`Fetched ${allQuestions.length} questions, ${validQuestions.length} are valid`);
+    
+    return validQuestions;
 };
 
 export const saveProgressToFirestore = async (

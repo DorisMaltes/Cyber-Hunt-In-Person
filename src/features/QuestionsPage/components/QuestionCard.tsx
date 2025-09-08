@@ -36,7 +36,7 @@ export default function QuestionCard(){
                     backgroundImage: `url(${AquaPill})`,
                     width: "230px",
                     height: "64px",
-                    backgroundSize: "contain", // o "100% 100%" si quieres que llene exactamente
+                    backgroundSize: "contain", 
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center"}}
                     className="flex justify-center items-center">

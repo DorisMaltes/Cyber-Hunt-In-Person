@@ -24,7 +24,9 @@ import QuizPage from './pages/QuizPage';
 import GamePage from './pages/GamePage';
 import RandomPage from './pages/RandomPage';
 
+//pages for the story line
 import StoryLine from './StoryLine/StoryLine';
+import StoryLineFinal from './StoryLine/StoryLineFinal';
 
 
 
@@ -69,6 +71,8 @@ function App() {
           <Route path='/random/:randomType' element={<RandomPage/>}/>
 
           <Route path='/firstPage' element={<MobileView/>}/>
+
+          <Route path='/storyLineFinal' element={<StoryLineFinal/>}/>
 
         </Routes>
       

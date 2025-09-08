@@ -3,7 +3,7 @@ import purplerCard from "../../../assets/imgs/Cuadro-De-Contenido-morado.png";
 import AquaPill from "../../../assets/imgs/AquaPill.png";
 import arrow from "../../../assets/imgs/flecha.png";
 import ImageButton from "../../../components/ImageButton";
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 
 interface QuizQuestionCardProps {
     question: Question;
@@ -18,9 +18,9 @@ interface QuizQuestionCardProps {
     totalQuestions: number;
 }
 
-// Helper function to determine pill size and font size based on max option length
+//  functions that determines pill size and font size 
 function getPillAndFontSize(maxOptionLength: number) {
-    // You can tweak these thresholds and sizes as needed
+    // 
     if (maxOptionLength > 50) {
         // Very long
         return {
@@ -57,11 +57,23 @@ export const QuizQuestionCard = ({
     currentQuestionNumber,
     totalQuestions,
 }: QuizQuestionCardProps) => {
-    // Compute the max option length for this question
-    const maxOptionLength = useMemo(
-        () => Math.max(...question.options.map(opt => opt.length)),
-        [question.options]
-    );
+
+    // to determine the max option length
+    const maxOptionLength = useMemo(() => {
+        // Handle cases where options might be undefined, null, or empty
+        if (!question.options || question.options.length === 0) {
+            return 0; // Default to 0 if no options
+        }
+        
+        // Filter out any undefined/null options and get their lengths
+        const validOptions = question.options.filter(opt => opt != null && typeof opt === 'string');
+        
+        if (validOptions.length === 0) {
+            return 0; // Default if no valid options
+        }
+        
+        return Math.max(...validOptions.map(opt => opt.length));
+    }, [question.options]);
     const { width, height, fontSize } = getPillAndFontSize(maxOptionLength);
 
     return (
@@ -83,8 +95,9 @@ export const QuizQuestionCard = ({
             </div>
 
             {/* Options */}
-            <div className="flex flex-col gap-4 w-full items-center">
-            {question.options.map((option, index) => {
+            <div className="flex flex-col gap-4 w-full items-center"> 
+                {/** the number of pills for each option is determined here */}
+                {question.options && question.options.length > 0 ? question.options.map((option, index) => {
                 const isSelected = selectedAnswer === option;
                 return (
                 <div
@@ -124,7 +137,11 @@ export const QuizQuestionCard = ({
                         {option}
                     </p>
                 </div>
-            )})}
+            )}) : (
+                <div className="text-white font-game text-center p-4">
+                    <p>No hay opciones disponibles para esta pregunta.</p>
+                </div>
+            )}
             </div>
         </div>
 
