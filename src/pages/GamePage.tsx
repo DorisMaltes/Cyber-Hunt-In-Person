@@ -1,5 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import { TicTacToe } from "../features/Game";
+import { Hangman } from "../features/Hangman";
+import { MemoryCard } from "../features/MemoryCard";
 
 export default function GamePage() {
   const [searchParams] = useSearchParams();
@@ -26,6 +28,10 @@ export default function GamePage() {
   switch (gameType) {
     case "tictactoe":
       return <TicTacToe boothId={boothId} />;
+    case "hangman":
+      return <Hangman boothId={boothId} />;
+    case "memorycard":
+      return <MemoryCard boothId={boothId} />;
     case "roulette":
       // TODO: Add roulette game component
       return (

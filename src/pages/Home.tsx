@@ -47,7 +47,7 @@ export default function Home() {
         {/* Modal explicativo */}
         <ModalQuestion
           title="What is CyberHunt?"
-          description="CyberHunt is an interactive game for you to play during this event. Go and look for QR codes on some booths and start hunting!"
+          description="CyberHunt is an interactive game for you to play during this event. Go and scan QR codes in this some booth and answer questions or play games to earn points and help Mark to kill the virus!"
         />
       </div>
 

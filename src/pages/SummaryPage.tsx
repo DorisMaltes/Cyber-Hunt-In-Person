@@ -24,7 +24,7 @@ export default function SummaryPage(){
                 <BackgroundMobile />
                 <div className="h-svh w-svw flex flex-col items-center justify-between py-6 px-4 relative z-10 ">
                     
-                   
+                
                     <div className="text-center">
                         <p className="text-white font-game text-4xl">Summary</p>
                     </div>
@@ -39,11 +39,11 @@ export default function SummaryPage(){
                     to="/home"
                     className="w-64 h-[70px]"
                     />
-                  
+                
 
                     
-                     
-                   
+                
+                
                     
                 </div>
             <Footer/>
