@@ -18,7 +18,7 @@ export const Roulette = ({ boothId }: RouletteProps) => {
 
   const { handleGoHome, saveRandomResult, loadingProgress, progressData } = useRandom(boothId, "roulette");
 
-  // Possible results that will appear on the visual wheel
+  // Possible results
   const possibleResults = ["+10", "+5", "-5", "-10"];
 
   useEffect(() => {

@@ -24,7 +24,7 @@ import QuizPage from './pages/QuizPage';
 import GamePage from './pages/GamePage';
 import RandomPage from './pages/RandomPage';
 
-//pages for the story line
+//pages for the Marks' story 
 import StoryLine from './StoryLine/StoryLine';
 import StoryLineFinal from './StoryLine/StoryLineFinal';
 

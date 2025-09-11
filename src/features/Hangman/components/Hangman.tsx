@@ -11,7 +11,7 @@ interface HangmanProps {
   boothId: string;
 }
 
-// Lista de palabras aleatorias para el juego
+// RANDOM WORDS FOR THE HANGMAN GAME
 const WORDS = [
   "COMPUTER", "PROGRAMMING", "CYBERSECURITY", "ALGORITHM", "DATABASE",
   "NETWORK", "SOFTWARE", "HARDWARE", "INTERNET", "PASSWORD",
@@ -194,7 +194,7 @@ export const Hangman = ({ boothId }: HangmanProps) => {
                     <p className="text-white font-sourceCodeFont text-lg">
                       {gameResult === "won" 
                         ? `Points: +${Math.max(5, 20 - wrongGuesses)}` 
-                        : "Points: -2"
+                        : "Points: -5"
                       }
                     </p>
                   </div>

@@ -70,7 +70,7 @@ export const TicTacToe = ({ boothId }: TicTacToeProps) => {
   const handleEndGame = () => {
     let finalScore = 0;
     if (gameResult === "X") finalScore = 10; // Win
-    else if (gameResult === "O") finalScore = -5; // Lose
+    else if (gameResult === "O") finalScore = -10; // Lose
     // Tie: 0 points
 
     saveGameResult({ finalScore });
