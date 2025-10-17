@@ -1,6 +1,6 @@
 import type { HangmanDrawingProps } from "../types";
 
-export const HangmanDrawing = ({ wrongGuesses, maxWrongGuesses }: HangmanDrawingProps) => {
+export const HangmanDrawing = ({ wrongGuesses }: HangmanDrawingProps) => {
   const getDrawingParts = () => {
     const parts = [];
     

@@ -6,7 +6,6 @@ import ImageButton from "../../../components/ImageButton";
 import HomeButton from "../../../assets/buttons/HomeButton.png";
 import { useGame } from "../hooks/useGame";
 
-import MarkHappy from "../../../assets/markStory/MarkHappy.png"
 
 interface TicTacToeProps {
   boothId: string;

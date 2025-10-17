@@ -29,7 +29,10 @@ export const Roulette = ({ boothId }: RouletteProps) => {
     }
   }, [loadingProgress, progressData]);
 
-  const handleFinishSpin = (prizeStr: string) => {
+  const handleFinishSpin = (result?: string | { name: string }) => {
+    if (!result) return;
+    
+    const prizeStr = typeof result === 'string' ? result : result.name;
     const prize = parseInt(prizeStr); // Convert "+10" or "-5" to number
     
     saveRandomResult({ finalScore: prize });

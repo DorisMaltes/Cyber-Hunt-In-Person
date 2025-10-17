@@ -17,7 +17,7 @@ import star10 from "../assets/stars/estrella10.gif"
 
 export default function BackgroundMobile() {
     return (
-        <div className="fixed inset-0 -z-10 bg-cover bg-center bg-[#15054E]">
+        <div className="fixed inset-0 -z-10 bg-cover  bg-center bg-gradient-to-b from-violet-200 via-[#5323C7] to-[#15054E] ">
 
                
                 <div className="relative h-svh w-svw">
@@ -81,7 +81,7 @@ export default function BackgroundMobile() {
                     direction="left-to-right"
                     size={{ width: 'w-[74px]', height: 'h-[50px]' }}
                     speed={1}
-                    yPosition="top-[4%]"
+                    yPosition="top-[50%]"
                 />
 
 

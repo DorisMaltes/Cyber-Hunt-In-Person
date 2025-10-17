@@ -1,202 +1,98 @@
-import { useState, useEffect } from 'react';
-import { TypeAnimation } from 'react-type-animation';
-import { useNavigate } from 'react-router-dom';
-import { useUserData } from '../features/home/hooks/useUserData';
-import { useLeaderboardData } from '../features/LeaderBoard/hooks/useLeaderBoardData';
-import personaje from './mark1.png';
-import personaje2 from './markGif.png';
-import markHappy from "../assets/markStory/MarkHappy.png"
-import repairedComputer from "../assets/markStory/computadora-restaurada.png"
-import wallpaper from "/Users/doriselena/Desktop/my-project/src/StoryLine/wallpaper.png";
-
-
 import BackgroundMobile from "../layouts/BackgroundMobile";
 import Footer from "../layouts/footerDektop";
+import { useUserData } from "../features/home";
 
-export default function StoryLineFinal() {
-    const [currentDialogIndex, setCurrentDialogIndex] = useState(0);
-    const [isFirstVisit, setIsFirstVisit] = useState(true);
-    const [circleFadeIn, setCircleFadeIn] = useState(false);
-    const [isEnding, setIsEnding] = useState(false);
-    const [fadeOut, setFadeOut] = useState(false);
+import { useSignOut } from "../features/signOut/hooks/useSignOut";
+import { useNavigate } from "react-router";
+
+//assets imports
+import ImageButton from "../components/ImageButton";
+import SignOutButton from "../assets/buttons/SignOutButton.png";
+import pillYellow from "../assets/imgs/pillYellow.png";
+import bdoLogo from "../assets/imgs/bdo_logo_color.png"
+import logo2 from "../assets/imgs/images-removebg-preview.png"
+
+
+
+import markHappy from "../assets/markStory/MarkHappy.png";
+
+type UserData = {
+    name: string;
+    score: number;
+    visited_booths?: any[];
+  };
+
+export default function CompletionPage() {
     const navigate = useNavigate();
-    
-    // Hooks para obtener datos del usuario y leaderboard
-    const { data: userData, isLoading: userLoading, isError: userError } = useUserData();
-    const { data: leaderboardData, isLoading: leaderboardLoading, isError: leaderboardError } = useLeaderboardData();
-    
-    // Función para obtener el texto del tercer diálogo con datos del usuario
-    const getThirdDialogText = () => {
-        if (userLoading || leaderboardLoading) {
-            return "Here's your final score. Let's see how high you made it on the leaderboard!";
-        }
-        
-        if (userError || leaderboardError || !userData || !leaderboardData) {
-            return "Here's your final score. Let's see how high you made it on the leaderboard!";
-        }
+    const { mutate: signOut } = useSignOut(() => {
+        navigate("/");
+    });
 
-        const userScore = userData.score || 0;
-        const userRank = leaderboardData.userRank;
-        
-        return `Here's your final score: ${userScore} points! You're ranked #${userRank} on the leaderboard!`;
-    };
+    const { data, isLoading, isError } = useUserData();
 
-    // Dialog array with story content
-    const dialogs = [
-        "Yes! The virus is gone and my computer is back online!",
-        "Thanks to you, the system is safe again — you've proven your skills!",
-        getThirdDialogText(),
-        "Thank you for playing CyberHunt, and see you at the next challenge!",
-    ];
-
-    // Character images mapping for each dialog
-    const characterImages = [
-        markHappy,
-        repairedComputer,
-        markHappy,
-        markHappy,
-        personaje2,
-
-    ];
-
-    // Get current character image based on dialog index
-    const getCurrentCharacterImage = () => {
-        return characterImages[currentDialogIndex] || personaje;
-    };
-
-    // Handle circular fade in effect on first visit
-    useEffect(() => {
-        if (isFirstVisit) {
-            const timer = setTimeout(() => {
-                setCircleFadeIn(true);
-                setTimeout(() => {
-                    setIsFirstVisit(false);
-                }, 1500); // Duration of circle fade in animation
-            }, 500); // Wait 500ms before starting circle fade in
-            
-            return () => clearTimeout(timer);
-        }
-    }, [isFirstVisit]);
-
-    // Handle fade out effect when story ends
-    useEffect(() => {
-        if (isEnding) {
-            const timer = setTimeout(() => {
-                // Navigate to home page after fade out
-                navigate('/home');
-            }, 1000); // Duration of fade out animation
-            
-            return () => clearTimeout(timer);
-        }
-    }, [isEnding, navigate]);
-
-    const handleClick = () => {
-        // Check if we're at the last dialog
-        if (currentDialogIndex === dialogs.length - 1) {
-            // Start ending sequence
-            setIsEnding(true);
-            setFadeOut(true);
-        } else {
-            // Advance to next dialog
-            setCurrentDialogIndex((prevIndex) => prevIndex + 1);
-        }
-    };
+    //handling of errors using TanStack 
+    if (isLoading) return <p className="text-white font-Game text-xl">Loading...</p>;
+    if (isError || !data || typeof data.name !== "string" || typeof data.score !== "number") {
+        return <p className="text-red-500 font-Game">Error loading user data</p>;
+    }
+    const {  score = [] } = data as UserData;
 
     return (
-        <div className="h-svh w-svw relative">
-            {/* Background layer */}
+        <div className="w-screen h-screen flex relative">
             <BackgroundMobile />
+            
+            {/* Main content */}
+            <div className="w-full h-full flex flex-col items-center justify-center relative z-20 pt-10">
+                <div className="flex flex-row items-center gap-20">
+                    <img src={bdoLogo} alt="BDO Logo" className="w-32" />
+                    <img src={logo2} alt="Logo 2" className="w-20" />
+                </div>
+                {/* Congratulations message */}
+                <div className="text-center mb-8">
+                    <h1 className="text-white font-game text-xl mb-4">
+                        Congratulations!
+                    </h1>
+                    <p className="text-white font-game text-sm mb-2">
+                        You have completed all the challenges! and helped Mark kill the virus!
+                    </p>
+                    <p className="text-white font-game text-sm">
+                        You are a true Cyber Hunter! Thank you for playing!
+                    </p>
+                </div>
 
-            {/* Story background image layer - positioned lower */}
-            <img 
-                src={wallpaper} 
-                alt="background" 
-                className='absolute bottom-0 left-0 w-full h-auto object-cover z-0'
-                style={{
-                    maxHeight: '80vh'
-                }}
-            />
+                {/* Completion badge */}
+                <div className="mb-8">
+                    <div className="w-32 h-32 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-2xl">
+                        <span className="text-6xl">🏆</span>
+                    </div>
+                    <img src={markHappy} className="w-32 h-32" />
+                </div>
 
-            {/* Footer layer */}
+                 {/* Points Section */}
+                <div className="mb-6 text-center">
+                    <p className="text-white font-game text-xl mb-2">Your Final Points:</p>
+                    <div 
+                    className="w-32 h-16 bg-no-repeat bg-center bg-contain flex items-center justify-center mx-auto"
+                    style={{ backgroundImage: `url(${pillYellow})` }}
+                    >
+                    <p className="text-[#15054E] font-sourceCodeFont text-3xl font-bold">
+                        {score}
+                    </p>
+                    </div>
+                </div>
+
+                <ImageButton
+                    onClick={() => signOut()}
+                    image={SignOutButton}
+                    size="w-48 h-20"
+                />
+
+            
+
+            
+            </div>
+            
             <Footer />
-
-            {/* Circular fade in overlay for first visit */}
-            {isFirstVisit && (
-                <div 
-                    className={`absolute inset-0 w-full h-full z-50 transition-all duration-1500 ease-in-out ${
-                        circleFadeIn ? 'scale-0' : 'scale-3'
-                    }`}
-                    style={{ 
-                        backgroundColor: 'black',
-                        borderRadius: '50%',
-                        transformOrigin: 'center',
-                        transform: circleFadeIn ? 'scale(0)' : 'scale(3)'
-                    }}
-                />
-            )}
-
-            {/* Fade out overlay for ending */}
-            {isEnding && (
-                <div 
-                    className={`absolute inset-0 w-full h-full z-50 transition-opacity duration-1000 ease-in-out ${
-                        fadeOut ? 'opacity-100' : 'opacity-0'
-                    }`}
-                    style={{ backgroundColor: 'black' }}
-                />
-            )}
-
-            
-
-            {/* Transparent text background rectangle - full width at bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-40 z-20" 
-                 style={{ backgroundColor: 'rgba(255, 255, 255, 0.70)' }}>
-            </div>
-            
-            {/* Text overlay with typewriter effect - with left padding to avoid character overlap */}
-            <div className="absolute bottom-0 left-4 right-36 h-40 flex items-center justify-start p-4 text-left z-30">
-                <div className="max-w-full max-h-full overflow-hidden">
-                    <TypeAnimation
-                        key={currentDialogIndex} // Important: change key to restart animation
-                        sequence={[dialogs[currentDialogIndex]]}
-                        wrapper="span"
-                        speed={50}
-                        cursor={false}
-                        repeat={0}
-                        className="text-sm font-semibold text-gray-800 leading-tight font-game block"
-                        style={{
-                            wordWrap: 'break-word',
-                            overflowWrap: 'break-word',
-                            hyphens: 'auto'
-                        }}
-                    />
-                </div>
-            </div>
-
-            {/* Character positioned at bottom right - changes based on dialog */}
-            <div className="absolute bottom-4 right-4 z-30">
-                <div className='flex items-center justify-center'>
-                    <img 
-                        src={getCurrentCharacterImage()} 
-                        alt="character" 
-                        className="w-40 h-40 object-contain"
-                        style={{
-                            maxWidth: '30vw',
-                            maxHeight: '30vh'
-                        }}
-                    />
-                </div>
-            </div>
-            
-            {/* User instruction overlay */}
-            {/*<div className="absolute top-2 right-2 text-xs text-gray-500 bg-white bg-opacity-80 px-2 py-1 rounded z-40">
-                {currentDialogIndex === dialogs.length - 1 ? 'Click to finish' : 'Click to continue'}
-            </div>
-
-            {/* Clickable overlay for interaction*/}
-            <div 
-                className="absolute inset-0 z-25 cursor-pointer" 
-                onClick={handleClick}
-            />
         </div>
     );
 }

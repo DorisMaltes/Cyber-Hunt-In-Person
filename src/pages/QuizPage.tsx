@@ -1,7 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import BackgroundMobile from "../layouts/BackgroundMobile";
 import Footer from "../layouts/footerDektop";
-import BackgroundMusic from "../components/BackgroundMusic";
 import { useQuiz } from "../features/Quiz";
 import {
   DifficultySelector,
@@ -56,7 +55,6 @@ export default function QuizPage() {
     totalQuestions,
     isLastQuestion,
     isFirstQuestion,
-    hasAnsweredCurrent,
   } = useQuiz(boothId);
 
   return (

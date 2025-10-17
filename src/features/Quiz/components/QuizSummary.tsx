@@ -1,5 +1,5 @@
 // Import types and components for the Quiz Summary component
-import type { QuizSummary as QuizSummaryType } from "../types";
+import type { QuizSummaryItem } from "../types";
 import ImageButton from "../../../components/ImageButton";
 import HomeButton from "../../../assets/buttons/HomeButton.png";
 
@@ -10,7 +10,7 @@ import MarkSad from "../../../StoryLine/markTriste.png";
 interface QuizSummaryProps {
     score: number;              // Final score achieved by the user
     elapsedTime: number;        // Time taken to complete the quiz
-    summary: QuizSummaryType[]; // Array of question results with answers
+    summary: QuizSummaryItem[]; // Array of question results with answers
     onGoHome: () => void;       // Callback function to navigate back to home
     savingProgress: boolean;    // Flag indicating if progress is being saved
 }
@@ -19,11 +19,12 @@ interface QuizSummaryProps {
 export const QuizSummary = ({
   score,
   elapsedTime,
-  summary,
+  
   onGoHome,
   savingProgress,
 }: QuizSummaryProps) => {
   return (
+    
     <div className="flex flex-col items-center gap-6 max-w-md mx-auto">
       {/* Quiz summary title */}
       <h2 className="text-white font-game text-3xl text-center">
@@ -60,39 +61,9 @@ export const QuizSummary = ({
         </div>
 
         {/* Scrollable container for individual question results */}
-        <div className="space-y-4 max-h-96 overflow-y-auto">
-          {/* Map through each question result and display details */}
-          {summary.map((item, index) => (
-            <div
-              key={index}
-              className={`p-3 rounded-lg ${
-                item.isCorrect ? "bg-green-500/20" : "bg-red-500/20"
-              }`}
-            >
-              {/* Display the question text */}
-              <p className="text-white font-game text-sm mb-2">
-                {item.question}
-              </p>
-              {/* Display user's answer */}
-              <p className="text-white font-sourceCodeFont text-xs">
-                Your answer: {item.userAnswer}
-              </p>
-              {/* Display correct answer */}
-              <p className="text-white font-sourceCodeFont text-xs">
-                Correct answer: {item.correctAnswer}
-              </p>
-              {/* Display result status and points earned */}
-              <p
-                className={`font-sourceCodeFont text-xs font-bold ${
-                  item.isCorrect ? "text-green-400" : "text-red-400"
-                }`}
-              >
-                {item.isCorrect ? "Correct" : "Incorrect"} (Points: {item.points})
-              </p>
-            </div>
-          ))}
-        </div>
+
       </div>
+        
 
       {/* Home button to navigate back to main menu */}
       <ImageButton
@@ -109,5 +80,6 @@ export const QuizSummary = ({
         </p>
       )}
     </div>
+    
   );
 }; 

@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { useNavigate } from 'react-router-dom';
 import personaje from './mark1.png';
 import personaje2 from './markGif.png';
 import computerVirus from '/Users/doriselena/Desktop/my-project/src/StoryLine/computadoraVirusAnimacion.gif';
-import computerVirus2 from "/Users/doriselena/Desktop/my-project/src/StoryLine/computadoraVirusAnimacion.gif";
 import wallpaper from "/Users/doriselena/Desktop/my-project/src/StoryLine/wallpaper.png";
 import markTriste from "./../StoryLine/markTriste.png";
 import crown from "../assets/imgs/crown.png";
@@ -16,9 +15,7 @@ import scanQR from "./../StoryLine/scan.png";
 
 import computadora from "./../StoryLine/gifComputadora.png";
 
-import mark1 from './mark1.png';
 
-import backgroundStory from '../assets/mobile/backgroundStory.png';
 import BackgroundMobile from "../layouts/BackgroundMobile";
 import Footer from "../layouts/footerDektop";
 
@@ -32,7 +29,7 @@ export default function StoryLine() {
     
     // Dialog array with story content
     const dialogs = [
-        "Another great day at GovWare! Let's finish these reports...",
+        "What a great day at GovWare! Let's finish these reports...",
         "Hmm? That’s strange… why is my screen lighting up?",
         "Oh no! A virus just hit my system — right in the middle of GovWare!",
         "I can't fix this on my own. I need your help!",
@@ -83,7 +80,7 @@ export default function StoryLine() {
         if (isEnding) {
             const timer = setTimeout(() => {
                 // Navigate to home page after fade out
-                navigate('/firstPage');
+                navigate('/home');
             }, 1000); // Duration of fade out animation
             
             return () => clearTimeout(timer);
@@ -101,6 +98,12 @@ export default function StoryLine() {
             setCurrentDialogIndex((prevIndex) => prevIndex + 1);
         }
     };
+    
+    const handleSkipStory = () => {
+        // Start ending sequence
+        setIsEnding(true);
+        setFadeOut(true);
+    };
 
     return (
         <div className="h-svh w-svw relative">
@@ -116,6 +119,22 @@ export default function StoryLine() {
                     maxHeight: '80vh'
                 }}
             />
+
+            {/* Skip Story Button */}
+            <button
+                onClick={handleSkipStory}
+                className="absolute top-4 left-4 z-40 px-3 py-1 text-white font-bold font-Game text-sm border-2 border-purple-700 hover:bg-purple-600 transition-colors"
+                style={{ 
+                   
+                    backgroundColor: '#6A20C0',
+                    borderRadius: '4px',
+                    textShadow: '1px 1px 0px #000'
+                }}
+            >
+                skip story
+            </button>
+
+            
 
             {/* Footer layer */}
             <Footer />

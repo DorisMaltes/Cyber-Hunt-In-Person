@@ -28,6 +28,9 @@ import RandomPage from './pages/RandomPage';
 import StoryLine from './StoryLine/StoryLine';
 import StoryLineFinal from './StoryLine/StoryLineFinal';
 
+//protected routes
+import ProtectedRoute from './components/ProtectedRoute';
+
 
 
 
@@ -40,39 +43,40 @@ function App() {
   return (
     <BrowserRouter>
         <Routes>
+          {/* Public Routes */}
           {isMobile ? (
-            <Route path='/' element={<StoryLine />} />
+            <Route path='/' element={<MobileView />} />
           ) : (
             <Route path='/' element={<DesktopView />} />
           )}
-          
+          <Route path='/register' element={<Registration/>}/>
           <Route path='/login' element={<Login/>}/>
 
-          <Route path='/register' element={<Registration/>}/>
+          {/* Protected Routes */}
 
-          <Route path='/home' element={<Home/>}/>
+          <Route path='/storyLine' element={<ProtectedRoute><StoryLine /></ProtectedRoute>} />
 
-          <Route path='/scan' element={<ScanQR/>}/>
+          <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>} />
 
-          <Route path='/leaderboard' element={<LeaderBoard/>}/>
+          <Route path='/scan' element={<ProtectedRoute><ScanQR/></ProtectedRoute>} />
 
-          <Route path='/alreadyVisited' element={<AlreadyVisitedBooth/>}/>
+          <Route path='/leaderboard' element={<ProtectedRoute><LeaderBoard/></ProtectedRoute>} />
 
-          <Route path='/chooseDifficulty' element={<ChooseDificultyPage/>}/>
+          <Route path='/alreadyVisited' element={<ProtectedRoute><AlreadyVisitedBooth/></ProtectedRoute>} />
 
-          <Route path='/questionPage' element={<QuestionPage/>}/>
+          <Route path='/chooseDifficulty' element={<ProtectedRoute><ChooseDificultyPage/></ProtectedRoute>} />
 
-          <Route path='/summaryPage' element={<SummaryPage/>}/>
+          <Route path='/questionPage' element={<ProtectedRoute><QuestionPage/></ProtectedRoute>} />
 
-          <Route path='/quiz' element={<QuizPage/>}/>
+          <Route path='/summaryPage' element={<ProtectedRoute><SummaryPage/></ProtectedRoute>} />
 
-          <Route path='/game' element={<GamePage/>}/>
+          <Route path='/quiz' element={<ProtectedRoute><QuizPage/></ProtectedRoute>} />
 
-          <Route path='/random/:randomType' element={<RandomPage/>}/>
+          <Route path='/game' element={<ProtectedRoute><GamePage/></ProtectedRoute>} />
 
-          <Route path='/firstPage' element={<MobileView/>}/>
+          <Route path='/random/:randomType' element={<ProtectedRoute><RandomPage/></ProtectedRoute>} />
 
-          <Route path='/storyLineFinal' element={<StoryLineFinal/>}/>
+          <Route path='/storyLineFinal' element={<ProtectedRoute><StoryLineFinal/></ProtectedRoute>} />
 
         </Routes>
       

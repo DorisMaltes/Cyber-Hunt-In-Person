@@ -2,13 +2,13 @@ import ImageButton from "../components/ImageButton";
 import arrow from "../assets/imgs/flecha.png";
 import loginButton from "../assets/buttons/botonLogIn.png"
 import BackgroundMobile from "../layouts/BackgroundMobile";
-import BackgroundMusic from "../components/BackgroundMusic";
 import Footer from "../layouts/footerDektop";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLogin, LogInForm } from "../features/logIn/index";
 import type {LoginData} from "../features/logIn/index"
+
 
 
 
@@ -17,8 +17,8 @@ export default function Login(){
   const [formData, setFormData] = useState<LoginData | null>(null);
   const navigate = useNavigate();
 
-  const { mutate, isLoading, isError, error } = useLogin((uid) => {
-    navigate("/home");
+  const { mutate, isPending, isError, error } = useLogin(() => {
+    navigate("/storyLine"); //after login, redirect to story line
   });
 
   const handleLogin = () => {
@@ -27,10 +27,25 @@ export default function Login(){
     }
   };
 
+  useEffect(() => {
+    if (isError && (error as any).message === "Firebase: Error (auth/wrong-password).") {
+      alert("Wrong password");
+    }
+    if (isError && (error as any).message === "Firebase: Error (auth/user-not-found).") {
+      alert("User not found");
+    }
+    if (isError && (error as any).message === "Firebase: Error (auth/invalid-email).") {
+      alert("Invalid email");
+    }
+    if (isError && (error as any).message === "Firebase: Error (auth/invalid-credential).") {
+      alert("The email or password is incorrect");
+    }
+  }, [isError, error]);
+    
+
     return(
-        <div className="min-h-screen flex flex-col items-center justify-between relative">
+    <div className="min-h-screen flex flex-col items-center justify-between relative">
         
-        <BackgroundMusic iconSize="w-8 h-8" />
         <BackgroundMobile />
       
 
@@ -59,9 +74,9 @@ export default function Login(){
             />
           </div>
 
-          {isLoading && <p className="text-white">Log In... </p>}
+          {isPending && <p className="text-white">Log In... </p>}
           
-          {isError && <p className="text-red-500 text-sm">{(error as any).message}</p>}
+        {/* {isError && <p className="text-red-500 text-sm">{(error as any).message}</p>} */}
           
         </div>
       </main>

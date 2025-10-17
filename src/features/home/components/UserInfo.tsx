@@ -1,4 +1,6 @@
 import { useUserData } from "..";
+import {useNavigate} from "react-router-dom";
+import { useEffect } from "react";
 
 type UserData = {
   name: string;
@@ -8,7 +10,17 @@ type UserData = {
 
 export default function UserInfo() {
   const { data, isLoading, isError } = useUserData();
-  
+  const navigate = useNavigate();
+
+  //redirect to completion page if user has completed all the challenges
+  useEffect(() => {
+    if (data && data?.visited_booths && data.visited_booths.length >= 5) {
+      navigate("/storyLineFinal");
+    }
+  }, [data?.visited_booths?.length, navigate]);
+
+
+
   //handling of errors using TanStack 
   if (isLoading) return <p className="text-white font-game text-xl">Loading...</p>;
   if (isError || !data || typeof data.name !== "string" || typeof data.score !== "number") {

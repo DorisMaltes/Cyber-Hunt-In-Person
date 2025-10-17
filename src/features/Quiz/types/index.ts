@@ -23,7 +23,7 @@ export interface ProgressData {
   visited: boolean;
 }
 
-export interface QuizSummary {
+export interface QuizSummaryItem {
   question: string;
   userAnswer: string;
   correctAnswer: string;
@@ -40,7 +40,7 @@ export interface QuizState {
   answers: Record<string, string>;
   showSummary: boolean;
   score: number;
-  summary: QuizSummary[];
+  summary: QuizSummaryItem[];
   startTime: number | null;
   elapsedTime: number;
   quizFinished: boolean;

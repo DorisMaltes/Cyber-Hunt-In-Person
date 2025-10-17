@@ -8,10 +8,8 @@ import {
   saveProgressToFirestore 
 } from "../api/quizApi";
 import type { 
-  QuizState, 
   DifficultyType, 
-  Question, 
-  QuizSummary 
+  QuizSummaryItem 
 } from "../types";
 
 export const useQuiz = (boothId: string) => {
@@ -24,7 +22,7 @@ export const useQuiz = (boothId: string) => {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showSummary, setShowSummary] = useState(false);
   const [score, setScore] = useState(0);
-  const [summary, setSummary] = useState<QuizSummary[]>([]);
+  const [summary, setSummary] = useState<QuizSummaryItem[]>([]);
   const [startTime, setStartTime] = useState<number | null>(null);
   const [elapsedTime, setElapsedTime] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
@@ -45,7 +43,6 @@ export const useQuiz = (boothId: string) => {
   const { 
     data: questions, 
     isLoading: loadingQuestions,
-    refetch: refetchQuestions 
     } = useQuery({
     queryKey: ["questions", boothId, difficulty],
     queryFn: () => fetchQuestions(boothId, difficulty!),
@@ -121,7 +118,7 @@ export const useQuiz = (boothId: string) => {
         if (!questions) return;
         
         let totalScore = 0;
-        const resultSummary: QuizSummary[] = questions.map((q) => {
+        const resultSummary: QuizSummaryItem[] = questions.map((q) => {
         const userAnswer = answers[q.id];
         const isCorrect = userAnswer === q.correct_answer;
         const points = isCorrect ? q.points_correct : q.points_incorrect;

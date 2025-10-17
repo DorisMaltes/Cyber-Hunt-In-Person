@@ -53,7 +53,7 @@ export const useQRScanner = () => {
         navigate(`/random/roulette?boothId=${boothId}`);
         break;
       default:
-        alert("Tipo de booth no reconocido.");
+        alert("Qr Code not valid. Scan Again.");
     }
   };
 

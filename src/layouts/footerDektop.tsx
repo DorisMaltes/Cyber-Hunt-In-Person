@@ -14,9 +14,9 @@ export default function Footer({fixedBottom = true}:FooterProps){
     const { isMobile } = useDeviceDetect();
 
     if(fixedBottom && isMobile) {
-         return (
+        return (
         <>
-             <footer 
+            <footer 
                 className="text-white p-4  shadow-inner fixed bottom-0 w-full h-20"
                 style={{backgroundImage: `url(${ladrillosMobile})`}}
             />  
@@ -24,9 +24,9 @@ export default function Footer({fixedBottom = true}:FooterProps){
     }
     
     if((fixedBottom == false) && isMobile){
-         return (
+        return (
         <>
-             <footer 
+            <footer 
                 className="text-white p-4  shadow-inner fixed top-0 w-full h-20"
                 style={{backgroundImage: `url(${ladrillosMobile})`}}
             />  

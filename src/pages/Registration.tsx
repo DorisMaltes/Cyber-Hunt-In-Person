@@ -5,11 +5,10 @@ import registerButton from "../assets/buttons/registerButton.png";
 
 //layput imports
 import BackgroundMobile from "../layouts/BackgroundMobile";
-import BackgroundMusic from "../components/BackgroundMusic";
 import Footer from "../layouts/footerDektop";
 
 //imports
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { RegistrationForm, useRegister } from "../features/registration";
@@ -33,10 +32,24 @@ export default function Registration() {
     }
   };
 
+  useEffect(() => {
+    if (isError && (error as any).message === "Firebase: Error (auth/email-already-in-use).") {
+      alert("Email already in use");
+    }
+    if (isError && (error as any).message === "Firebase: Error (auth/invalid-email).") {
+      alert("Invalid email");
+    }
+    if (isError && (error as any).message === "Firebase: Error (auth/weak-password).") {
+      alert("Weak password");
+    }
+    if (isError && (error as any).message === "Firebase: Error (auth/invalid-credential).") {
+      alert("The email or password is incorrect");
+    }
+  }, [isError, error]);
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-between relative">
         
-        <BackgroundMusic iconSize="w-8 h-8" />
         <BackgroundMobile />
       
 
